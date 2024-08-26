@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Presentation for My Awesome Brother</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            color: #333;
+            overflow-x: hidden;
+        }
+        header {
+            background: linear-gradient(135deg, #0288d1, #03a9f4);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            border-bottom: 5px solid #0288d1;
+            animation: headerSlideIn 1s ease-out;
+        }
+        @keyframes headerSlideIn {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        section {
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeInUp 1s forwards;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        section:nth-child(even) {
+            animation-delay: 0.3s;
+        }
+        section:nth-child(odd) {
+            animation-delay: 0.6s;
+        }
+        section:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+        h2 {
+            color: #0288d1;
+            border-bottom: 4px solid #01579b;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 2.2em;
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            animation: textColorChange 1s ease-in-out infinite alternate;
+        }
+        @keyframes textColorChange {
+            from {
+                color: #0288d1;
+            }
+            to {
+                color: #01579b;
+            }
+        }
+        .timeline {
+            position: relative;
+            padding: 10px 0;
+            list-style: none;
+            border-left: 4px solid #0288d1;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+            padding-left: 20px;
+            animation: fadeInLeft 1s ease-out;
+        }
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: #0288d1;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px #ffffff;
+        }
+        .timeline-item h3 {
+            margin: 0;
+            font-family: 'Lora', serif;
+            color: #0288d1;
+            font-size: 1.6em;
+            font-weight: 700;
+        }
+        .timeline-item p {
+            font-size: 1.1em;
+            color: #555;
+            font-weight: 600;
+        }
+        .personal-message {
+            font-style: italic;
+            color: #01579b;
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+        footer {
+            background: #0288d1;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.3);
+            animation: footerSlideIn 1s ease-out;
+        }
+        @keyframes footerSlideIn {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+            .timeline {
+                border-left: none;
+            }
+            .timeline-item {
+                padding-left: 0;
+                margin-left: 20px;
+                border-left: 4px solid #0288d1;
+            }
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            animation: fadeIn 0.3s;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .modal-content {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+            text-align: center;
+            animation: zoomIn 0.3s;
+        }
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        .modal-content img {
+            width: 100%;
+            border-radius: 15px;
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
+            font-size: 28px;
+            color: #0288d1;
+            transition: color 0.3s;
+        }
+        .modal-close:hover {
+            color: #01579b;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hey Nandu Bro! Check This Out!</h1>
+    </header>
+    <div class="container">
+        <section id="introduction">
+            <h2>Welcome!</h2>
+            <p>Hey there! I'm excited to share my latest adventures, some cool childhood memories, and the awesome bond we share.</p>
+        </section>
+        
+        <section id="childhood-memories">
+            <h2>Blast from the Past</h2>
+            <div class="gallery">
+                <img src="C:\Users\ADMIN\Downloads\IMG_20240825_113046.jpg" alt="Childhood Memory 1" onclick="openModal('C:\Users\ADMIN\Downloads\IMG_20240825_113046.jpg')">
+                <img src="C:\Users\ADMIN\Downloads\IMG_20240825_113031.jpg" alt="Childhood Memory 2" onclick="openModal('C:\Users\ADMIN\Downloads\IMG_20240825_113031.jpg')">
+               <script>
+    function openModal(src) {
+        document.getElementById('modal-image').src = src;
+        document.getElementById('modal').style.display = 'flex';
+    }
+</script>
+            </div>
+            <p>Here are some of the favorite memories. Each picture brings back a ton of great times such as your beauty plus,editing skills!.I was your unpaid photographer for your posts of facebook.</p>
+        </section>
+        
+        <!-- New Section -->
+        <section id="achievements">
+            <h2>MY CHILDHOOD MEMORIES WITH YOU.</h2>
+            <ul class="timeline">
+                <li class="timeline-item">
+                    <h3>PLAYING GAMES WITH YOU.</h3>
+                    <p>I remember those carefree days of our childhood when we used to spend hours of making fun and laughter. We would gather for epic carrom matches using the bottle corks
+. Cricket matches in the front of your house, with your false rules, always ended with teaseing each other. 
+Our badminton games were equally memorable played using Rohit's badminton.
+ Those times, with their laughter and playful competition,the fun we made together, will be always saved in my mind.</p>
+                </li>
+                <li class="timeline-item">
+                    <h3>WORKING WITH YOU.</h3>
+                    <p>I helps you to assist your daily household tasks, such as filling water and managing other works. Additionally, I supported you at your shop by locating items and helps you to manage your customers. Seeing you doing workout to gain muscles.</p>
+                </li>
+             
+            </ul>
+        </section>
+        
+        <section id="bond">
+            <h2>Our Special Bond</h2>
+            <p>Our special relationship is super special to me. I know that as you grew older, our time together became more limited due to restrictions from my home. 
+However, during your teenage years, we had the spend a lot of time together and shared many experiences and memories. 
+Those moments were precious,and the stupid things we did together such as,"party in my grandfather's death,playing games in your tab and micromax bolt",and much more. </p>
+            <!-- Share stories or personal reflections here -->
+        </section>
+        
+        <section id="conclusion">
+            <h2>All Wrapped Up</h2>
+            <p class="personal-message">Thanks for checking out this presentation! I hope it shows just how much you mean to me and how much I cherish our time together.
+I only just wants to grab your little time from your busy work schedule.I hope you have great opportunities and success in your job as well as life. 
+Even as things change, don’t forget about your old poor friend or brother who’s always here for you. I’ll always value the times we shared and support you no matter what.</p>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2024 My Awesome Presentation for the best brother"NANDAN SINGH RAWAL". All rights reserved.</p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <img id="modal-image" src="" alt="Expanded View">
+        </div>
+    </div>
+
+    <script>
+        function openModal(src) {
+            document.getElementById('modal-image').src = src;
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside of the modal content
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('modal')) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
